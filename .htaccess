@@ -1,0 +1,12 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteRule "register.html" "wp-content/plugins/thanhnhac-login/view-client/register-view.php"
+RewriteRule "Intermediate.html" "wp-content/plugins/thanhnhac-login/view-client/Intermediate.php"
+RewriteEngine On
+RewriteBase /thanhnhac/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /thanhnhac/index.php [L]
+</IfModule>
+# END WordPress
