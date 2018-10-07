@@ -16,10 +16,10 @@
                             </div>
                             <div id="messages">
         <pre>
-        Mời bạn lựa chọn theo các phím chức năng sau: 
-        1.abc
-        2.xyz
-        3.def
+Mời bạn lựa chọn theo các phím chức năng sau: 
+1.abc
+2.xyz
+3.def
         </pre>
                             </div>
 
@@ -29,7 +29,22 @@
                 
                 <div class="home-right col-xl-4 col-lg-4">
                     <?php do_shortcode('[shortcode1]'); ?>
-                    <a href="http://localhost/thanhnhac/register.html">Đăng kí</a>
+                    <?php 
+                        if($_GET['f']){
+                        ?>
+                        <script type="text/javascript">
+                             swal({
+                              title: "Thông báo!",
+                              text: "Tên đăng nhập hoặc mật khẩu chưa chính xác!",
+                              type: "error",
+                              confirmButtonText: 'OK',
+                              timer: 8000
+                            });
+                        </script>
+                        <?php
+                        }
+                    ?>
+                    
                 </div>
             </div>
         </div>

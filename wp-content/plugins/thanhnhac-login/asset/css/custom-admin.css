@@ -1,0 +1,36 @@
+#fadeandscale {
+  transform: scale(0.8);
+}
+.well{
+	min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: none;
+    margin: 1em;
+}
+.popup_visible #fadeandscale {
+  transform: scale(1);
+}
+.topic-select{
+	width: 25%;
+}
+.topicchild-input{
+	width: 25%;
+}
+.btn:focus{
+	box-shadow: none;
+}
+
+.box{
+width:1270px;
+padding:20px;
+background-color:#fff;
+border:1px solid #ccc;
+border-radius:5px;
+margin-top:25px;
+box-sizing:border-box;
+}

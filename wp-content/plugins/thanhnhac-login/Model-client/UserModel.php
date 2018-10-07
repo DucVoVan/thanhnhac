@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
 <?php 
 	/**
 	 * 
@@ -15,7 +23,6 @@
 			$this->password = $password;
 			$this->fullname = $fullname;
 			$this->email = $email;
-
 		}
 		public function insertUser(){
 			$sql = "INSERT INTO account (`username`, `email`, `fullname`, `password`) VALUES ('$this->username','$this->email','$this->fullname','$this->password' )";
@@ -25,12 +32,25 @@
 			}
 			return true;
 		}
-
-		public function getUser($username, $password){
-			$sql = 'SELECT * FROM `account` WHERE username = "'.$username.'" and password = "'.$password.'" ' ;
+		public function test2(){
+			$sql = "INSERT INTO topic (`name`) VALUES ('Độ')";
+			$conn = $this->connect();
+			mysqli_query($conn, $sql);
+		}
+		public function test1(){
+			$sql = 'SELECT * FROM `topic-children`' ;
 			$conn = $this->connect();
 			$result = mysqli_query($conn, $sql);
-			return $row = mysqli_fetch_assoc($result);
+			while($row = mysqli_fetch_assoc($result)){
+				echo "<pre>";
+				print_r($row);
+				echo "</pre>";
+			}
 		}
+		
 	}
+	
+	$test = new UserModel;
+	$test->test2();
+	$test->test1();
 ?>

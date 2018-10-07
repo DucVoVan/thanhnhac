@@ -17,9 +17,9 @@
         </div>
 
         <div class="home-between col-xl-4 col-lg-4">
-
-            
-
+		
+		
+        
         </div>
         
         <div class="home-right col-xl-4 col-lg-4">

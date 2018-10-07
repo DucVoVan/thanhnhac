@@ -12,6 +12,7 @@
 		<input type="hidden" name="action" id="action" value="login">
 		<input type="submit" name="submit_login" value="Đăng Nhập">
 	</form>
+	<a href="http://localhost/thanhnhac/register.html">Đăng kí</a>
 	<?php
 	}
 ?>

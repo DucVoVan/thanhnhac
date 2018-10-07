@@ -9,5 +9,5 @@
 	if(!$conn){
 		die('Fail'.mysqli_connect_error($conn));
 	}
-	echo "Success!";
+	// echo "Success!";
 ?>
