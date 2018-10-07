@@ -3,7 +3,8 @@
 	 * 
 	 */
 	require_once('../Model-client/UserModel.php');
-	require_once('../Model-client/TeacherModel.php');
+	require_once('../Model-client/UserModelLogin.php');
+	require_once('jwt.php');
 	class User_Controller
 	{
 		public function register(){
@@ -25,17 +26,17 @@
 			$username = isset($_POST['username'])? $_POST['username']: '' ;
 			$password = isset($_POST['password'])? $_POST['password']: '' ;
 			$password = md5($password);
-			$user = new UserModel;
-			$row = $user->getUser($username,$password);
+			$user = new UserModelLogin;
+			$user->fetchAll($username, $password);
+			$row = $user->authlogin();
 			if($row){
 				// echo $row['id'];
-				require_once('../view-client/User.php');
+				session_start();
+				// $_SESSION['username'] = $username;
+				// $_SESSION['password'] = $password;
+ 				require_once('../view-client/User.php');
 			}else{
-				$teacher = new TeacherModel;
-				$row = $teacher->getTeacher($username,$password);
-				if($row){
-					echo "Đăng nhập teacher thành công!";
-				}
+				header("Location: http://localhost/thanhnhac/?f=fail&username=$username");
 			}
 		}
 	}

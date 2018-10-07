@@ -38,7 +38,7 @@ setTimeout(init, 50);
 }
 document.onload = init();
 
-</SCRIPT>
+</script>
 </head>
 <body>
 <h2>Prepare to be redirected after <span id="container"></span> second(s)!</h2>

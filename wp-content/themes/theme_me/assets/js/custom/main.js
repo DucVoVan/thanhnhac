@@ -24,7 +24,7 @@
 	            },
 	            success : function (result){
 	                // Sau khi gửi và kết quả trả về thành công thì gán nội dung trả về
-	                // đó vào thẻ div có id = result
+	                // đó vào thẻ div có id = result1
 	                $('#result1').html(result);
 	            }
         	});
