@@ -1,5 +1,5 @@
 (function($){
-	$("form").on('submit',function(){
+	$(".form-add-topic").on('submit',function(){
 		var that = $(this),
 			url  = that.attr('action'),
 			type = that.attr('method'),

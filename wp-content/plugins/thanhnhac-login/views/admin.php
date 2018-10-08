@@ -20,6 +20,30 @@
 <body>
 	<div id="fadeandscale" class="well">
     </div>
+    <div id="fade" class="well">
+    	<form action="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/control-admin-views/add-user.php" method="POST" class="form-add-user" >
+    		<label class="label-add">Thêm tài khoản mới</label>
+    		<div>
+	    		<label for="data1">username:</label>
+		    	<input type="text" id="data1"/>
+	    	</div>
+	    	<div>
+		    	<label for="data2">email:</label>
+		    	<input type="email" id="data2"/>
+	    	</div>
+	    	<div>
+		    	<label for="data3">fullname:</label>
+		    	<input type="text" id="data3"/>
+	    	</div>
+	    	<div>
+		    	<label for="data4">password:</label>
+		    	<input type="password" id="data4"/>
+	    	</div>
+	    	<input type="submit" class="btn btn-info" value="Thêm" />
+	   		<input type="button" class="my_popup_close btn btn-info" value="Đóng" />
+    	</form>
+    	<!-- Add an optional button to close the popup -->
+    </div>
 	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 		<li class="nav-item">
 			<a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Tạo các chủ đề con</a>
@@ -36,7 +60,7 @@
 	</ul>
 	<div class="tab-content" id="pills-tabContent">
 		<div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-			<form action="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/control-admin-views/AddTopicChildren.php" method="POST">
+			<form action="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/control-admin-views/AddTopicChildren.php" method="POST" class="form-add-topic">
 				<label for="topic">Chọn các chủ đề: </label></br>
 				<select id="topic" class="form-control topic-select">
 						<option value="">--Chọn--</option>
@@ -58,7 +82,7 @@
 				<div class="table-responsive">
 					<br />
 					<div align="right">
-						<button type="button" name="add" id="add" class="btn btn-info">Add</button>
+						<button type="button" name="add" id="add" class="btn btn-info">Thêm tài khoản mới</button>
 					</div>
 					<br />
 					<div id="alert_message"></div>
@@ -68,6 +92,7 @@
 								<th>username</th>
 								<th>email</th>
 								<th>fullname</th>
+								<th>delete</th>
 							</tr>
 						</thead>
 					</table>

@@ -34,3 +34,28 @@ border-radius:5px;
 margin-top:25px;
 box-sizing:border-box;
 }
+tr:hover {
+    background-color: #dcdcdc!important;
+}
+#fade,
+#fade_wrapper,
+#fade_background {
+  transition: all 0.3s;
+}
+.form-add-user div{
+  display: flex;
+  margin-bottom: 10px;
+}
+.form-add-user div label{
+  max-width: 30%;
+  flex-basis: 30%;
+}
+.form-add-user div input{
+  max-width: 70%;
+  flex-basis: 70%;
+}
+.label-add{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
