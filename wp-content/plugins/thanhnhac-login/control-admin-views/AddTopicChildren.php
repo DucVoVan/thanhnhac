@@ -1,9 +1,9 @@
 <?php
 	require_once("../Create-table/connect.php");
 	$topic = isset($_POST['topic'])? $_POST['topic']: '';
-	
-	
 	$topicchild = isset($_POST['topicchild'])? $_POST['topicchild']: '';
+
+
 	$sql = "SELECT `id` FROM `topic` WHERE `name` = '$topic'";
 	$result = mysqli_query($conn, $sql);
 	$row = mysqli_fetch_assoc($result);
@@ -39,8 +39,5 @@
 				echo "fail";
 			}
 	}
-
-
-	
 	
 ?>

@@ -7,11 +7,14 @@
 	{
 		private $username;
 		private $password;
-
-		public function fetchAll($username, $password){
+		function __construct($username, $password){
 			$this->username = $username;
 			$this->password = $password;
 		}
+		// public function fetchAll($username, $password){
+		// 	$this->username = $username;
+		// 	$this->password = $password;
+		// }
 		public function authlogin(){
 			$sql = 'SELECT * FROM `account` WHERE username = "'.$this->username.'" and password = "'.$this->password.'" ' ;
 			$conn = $this->connect();

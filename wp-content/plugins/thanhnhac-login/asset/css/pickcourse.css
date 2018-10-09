@@ -1,0 +1,34 @@
+html,body{
+	height: 100%;
+}
+div.show{
+			color: red;
+			opacity: 0;
+			
+		}
+h1.a,h1.b,h1.c{
+	cursor: pointer;
+	 margin: 0;
+	 text-align: center;
+}
+.select{
+	height: auto;
+	position: relative;
+    top: 40%;
+    transition: 0.8s all;
+}
+.container,.row{
+	height: auto;
+}
+.row div{
+	border: 1px solid #d0cfcf;
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100px;
+}
+.alert-pick{
+	margin: 0 auto;
+    width: 1140px;
+   	display: block;
+}
