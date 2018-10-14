@@ -37,6 +37,7 @@
  				// Kiểm tra xem account đã chọn khóa học nào chưa, nếu chọn rồi thì chuyển sang trang cá nhân, nếu chưa chọn thì ta về trang giới thiệu khóa học pickcourse.php
  				$check = new CourseRegistered();
  				if($check->checkCourse($row['id'])){
+ 					
  					require_once('../view-client/User.php');
  				}else{
  					header("Location: http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/pickcourse.php");

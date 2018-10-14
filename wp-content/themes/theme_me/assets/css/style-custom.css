@@ -157,3 +157,7 @@ div#primary-menu1, div#primary-menu2, div#primary-menu3 {
     font-size: 25px;
     padding: 10px;
 }
+.chatbot-child{
+    display: none;
+    height: 100%;
+}

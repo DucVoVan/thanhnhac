@@ -9,22 +9,22 @@
                     <div class="chatbot">
                         <div id="result1">
                             
-                            </div>
+                        </div>
                             
-                            <div class="chatbot-title">
-                                Chat Bot
-                            </div>
-                            <div id="messages">
+                        <div class="chatbot-title">
+                            Chat Bot
+                        </div>
+                        <div id="messages">
         <pre>
 Mời bạn lựa chọn theo các phím chức năng sau: 
 1.abc
 2.xyz
 3.def
         </pre>
-                            </div>
-
-                            <input type="text" value="" id="number" placeholder="Nhập tin nhắn ..."/>
                         </div>
+
+                        <input type="text" value="" id="number" placeholder="Nhập tin nhắn ..."/>
+                    </div>
                 </div>
                 
                 <div class="home-right col-xl-4 col-lg-4">

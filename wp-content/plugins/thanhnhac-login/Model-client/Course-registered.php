@@ -29,18 +29,22 @@
 			if($check == count($insert)){
 				echo "Đăng kí thành công!";
 			}
-			// $result = mysqli_multi_query($conn, $query);
-			// if($result){
-			// 	echo "thanh cong";
-			// }else{
-			// 	echo mysqli_error($conn);
-			// }
-			// $query = "INSERT INTO `course-registered` (`accountid`,`courseid`) VALUES ('$account_id','$insert')";
-			// $result = mysqli_query($conn, $query);
-			// if($result){
-			// 	echo "thanh cong";
-			// }
 			mysqli_close($conn);
+		}
+
+		public function getCourse($id){
+			$conn  = $this->connect();
+			// Truy vấn vào bảng course-registered để xem account đã chọn khóa học nào hay chưa, nếu có trả về true, sai trả về false
+			$query = "SELECT `courseid` FROM `course-registered` WHERE accountid='$id'";
+			$result = mysqli_query($conn, $query);
+			while($row = mysqli_fetch_assoc($result)){
+				$query2 = "SELECT `name` FROM `course` WHERE id='".$row['courseid']."'";
+				$result2 = mysqli_query($conn, $query2);
+				// printf("Error: %s\n", mysqli_error($conn));
+				$row2   = mysqli_fetch_assoc($result2);
+				echo $row2['name'];
+			}
+			
 		}
 	}
 	// $run = new CourseRegistered();
