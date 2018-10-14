@@ -1,33 +1,38 @@
 <?php 
 	require_once("UserDB.php");
 	class Topic extends UserDB{
-		public function getTopic(){
+		// Load các chủ đề và khóa học liên quan tới chủ đề Thanh nhạc
+		public function getTopic($name){
 			$conn = $this->connect();
 			// truy vấn tất cả record trong bảng topic
-			$query = "SELECT * FROM `topic`";
+			$query = "SELECT `id` FROM `topic` WHERE `name`='".$name."'";
 			$result = mysqli_query($conn, $query);
-			while($row = mysqli_fetch_assoc($result)){
-				// Nếu truy vấn topic có name là Chị em, thì ta không làm gì cả, vì chỉ hiện thị các khóa học nhạc.
-				if($row['name'] == "Chị em"){
+			// Khởi tạo mảng data
+			$data = array();
+			$row = mysqli_fetch_assoc($result);
+				// truy vấn record tìm chủ đề con tương ứng với chủ đề cha, mà có topicid ứng với topic hiện tại
+			$query2 = "SELECT * FROM `topic-children` WHERE `topic-children`.`topicid` = '".$row['id']."'";
+			$result2 = mysqli_query($conn, $query2);
 
-				}else{
-				// truy vấn record mà có topicid ứng với topic hiện tại
-				$query2 = "SELECT * FROM `topic-children` WHERE `topic-children`.`topicid` = '".$row['id']."'";
-				$result2 = mysqli_query($conn, $query2);
-
-					// if($row['name'] != "Chị em"){
-					?>
-						<div><?php echo $row['name']; ?></div>
-					<?php
-
-					// }
-					while($row2 = mysqli_fetch_assoc($result2)){
-					?>
-						<div><?php echo $row2['name']; ?></div>
-					<?php
-					}
-				}
+			while($row2 = mysqli_fetch_assoc($result2)){
+				//Đẩy bản ghi topic-child vào data
+				$data[] = $row2;
 			}
+			// Mã hóa data về dang JSON
+			echo json_encode($data);
 		}
+		
+		public function getCourse($id){
+			$conn = $this->connect();
+			$query = "SELECT * FROM `course` WHERE `topicidchildren`='".$id."'";
+			$result = mysqli_query($conn, $query);
+			$data = array();
+			while($row = mysqli_fetch_assoc($result)){
+				$data[] = $row;
+			}
+			echo json_encode($data);
+		}		
 	}
+	// $run = new Topic();
+	// $run->getTopic("Guitar");
 ?>

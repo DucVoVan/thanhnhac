@@ -4,7 +4,8 @@ html,body{
 div.show{
 			color: red;
 			opacity: 0;
-			
+			margin: 0 auto;
+    		width: 1140px;
 		}
 h1.a,h1.b,h1.c{
 	cursor: pointer;
@@ -31,4 +32,17 @@ h1.a,h1.b,h1.c{
 	margin: 0 auto;
     width: 1140px;
    	display: block;
+}
+.conn-1, .conn-2, .conn-3{
+	display: flex;
+}
+.conn-1-1, .conn-2-1, .conn-3-1{
+	max-width: 30%;
+	flex-basis: 30%;
+	border: 1px solid blue;
+}
+.conn-1-2, .conn-2-2, .conn-3-2{
+	max-width: 70%;
+	flex-basis: 70%;
+	border: 1px solid blue;
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once('UserDB.php');
 	class CourseRegistered extends UserDB{
 		public function checkCourse($id){
@@ -15,7 +15,34 @@
 				return false;
 			}
 		}
+		public function register_course_DB($insert, $account_id){
+			$conn = $this->connect();
+			$query = "";
+			$check = 0;
+			for($i = 0; $i < count($insert); $i++){
+				$query = "INSERT INTO `course-registered` (accountid,courseid) VALUES ('".$account_id."','".$insert[$i]."')";
+				$result = mysqli_query($conn, $query);
+				if($result){
+					$check = $check + 1;
+				}
+			}
+			if($check == count($insert)){
+				echo "Đăng kí thành công!";
+			}
+			// $result = mysqli_multi_query($conn, $query);
+			// if($result){
+			// 	echo "thanh cong";
+			// }else{
+			// 	echo mysqli_error($conn);
+			// }
+			// $query = "INSERT INTO `course-registered` (`accountid`,`courseid`) VALUES ('$account_id','$insert')";
+			// $result = mysqli_query($conn, $query);
+			// if($result){
+			// 	echo "thanh cong";
+			// }
+			mysqli_close($conn);
+		}
 	}
 	// $run = new CourseRegistered();
-	// $run->checkCourse(58);
+	// $run->register_course_DB(8,56);
 ?>

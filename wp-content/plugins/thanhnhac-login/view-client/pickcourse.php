@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/css/pickcourse.css" media="all" />
 	<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/jquery-3.3.1.min.js"></script>
 	<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/pickcourse.js" async></script>
+	<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="select">
@@ -22,10 +23,13 @@
 					<h1 class="c">Chị em</h1>
 				</div>
 			</div>
+		</div>
 		<div class="show">
 			
 		</div>
-		</div>
+		
+
 	</div>
 </body>
 </html>
+			
