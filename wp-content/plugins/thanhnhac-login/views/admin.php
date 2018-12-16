@@ -52,7 +52,7 @@
 			<a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Quản lý User</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+			<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Chấm điểm thanh nhạc</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact2" role="tab" aria-controls="pills-contact" aria-selected="false">Contact2</a>
@@ -60,47 +60,17 @@
 	</ul>
 	<div class="tab-content" id="pills-tabContent">
 		<div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-			<form action="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/control-admin-views/AddTopicChildren.php" method="POST" class="form-add-topic">
-				<label for="topic">Chọn các chủ đề: </label></br>
-				<select id="topic" class="form-control topic-select">
-						<option value="">--Chọn--</option>
-						<option value="Thanh nhạc">Thanh nhạc</option>
-						<option value="Guitar">Guitar</option>
-						<option value="Keyboard">Keyboard</option>
-						<option value="Chị em">Chị em</option>
-				</select>
-				</br>
-				<div class="form-group topicchild-input">
-					<label for="topicchild">Chủ đề con: </label>
-					<input type="text" name="topicchild" id="topicchild" value="" class="form-control" placeholder="Chủ đề con">
-				</div>
-				<input type="submit" value="Thêm chủ đề" class="btn btn-info">
-			</form></br>
-			<div class="rs"></div>
+			<?php include("AddTopicChildren.php"); ?>
 		</div>
 		<div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-			<div class="container box">
-				<div class="table-responsive">
-					<br />
-					<div align="right">
-						<button type="button" name="add" id="add" class="btn btn-info">Thêm tài khoản mới</button>
-					</div>
-					<br />
-					<div id="alert_message"></div>
-					<table id="user_data" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>username</th>
-								<th>email</th>
-								<th>fullname</th>
-								<th>delete</th>
-							</tr>
-						</thead>
-					</table>
-				</div>
-			</div>
+			<?php include("ManagerUser.php"); ?>
 		</div>
-		<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+		<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+			<?php
+				require_once("connect.php");  
+				include("ManagerMusic.php");
+			?>
+		</div>
 		<div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
 	</div>
 	

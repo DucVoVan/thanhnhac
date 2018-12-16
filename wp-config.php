@@ -17,7 +17,7 @@
  *
  * @package WordPress
  */
-
+define( 'WP_AUTO_UPDATE_CORE', false );
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'thanhnhac');
@@ -87,3 +87,4 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+define(‘WP_MEMORY_LIMIT’, ‘250M’);

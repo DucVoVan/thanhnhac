@@ -34,7 +34,7 @@
 			$row = $user->authlogin();
 			$_SESSION['id'] = $row['id'];
 			if($row){
- 				// Kiểm tra xem account đã chọn khóa học nào chưa, nếu chọn rồi thì chuyển sang trang cá nhân, nếu chưa chọn thì ta về trang giới thiệu khóa học pickcourse.php
+ 				// Kiểm tra xem account đã chọn khóa học nào chưa, nếu chọn rồi thì chuyển sang trang cá nhân, nếu chưa chọn thì ta về trang đánh giá năng lực Markingforce.php
  				$check = new CourseRegistered();
  				if($check->checkCourse($row['id'])){
  					
