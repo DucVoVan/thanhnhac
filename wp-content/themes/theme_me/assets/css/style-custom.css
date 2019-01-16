@@ -161,3 +161,12 @@ div#primary-menu1, div#primary-menu2, div#primary-menu3 {
     display: none;
     height: 100%;
 }
+.site-logo{
+    width: 40%;
+    height: 30%;
+    margin: 0 auto;
+}
+.site-logo a img{
+    width: 100%!important;
+    height: 100%!important;
+}

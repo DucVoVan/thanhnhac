@@ -80,3 +80,36 @@ td{
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+tr:nth-child(odd) {
+        background-color: rgba(0,0,0,.05);
+    }
+.eye{
+  text-align: center;
+}
+.eye a{
+  font-size: 25px;
+}
+.pencil{
+  text-align: center;
+}
+.pencil a{
+  font-size: 25px;
+}
+.hi{
+  background-color: #17a2b8;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  width: 25%;
+  margin-bottom: 10px;
+}
+.hi:hover{
+  background-color:  #1bb2ca;
+  text-decoration: none;
+  color: white;
+}
+.hi:focus{
+  box-shadow: none;
+}

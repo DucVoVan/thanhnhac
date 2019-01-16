@@ -8,7 +8,6 @@
 	require_once('../Model-client/Course-registered.php');
 	require_once('../Model-client/Topic.php');
 	require_once('../Model-client/Course.php');
-	require_once('jwt.php');
 	class User_Controller
 	{
 		
@@ -17,11 +16,14 @@
 			$password = isset($_POST['password'])? $_POST['password']: '' ;
 			$password = md5($password);
 			$fullname = isset($_POST['fullname'])? $_POST['fullname']: '' ;
+			$phone = isset($_POST['phone'])? $_POST['phone']: '' ;
+			$phone = intval($phone);
 			$email = isset($_POST['email'])? $_POST['email']: '' ;
-			
-			$user = new UserModel($username,$password,$fullname,$email);
+			$user = new UserModel($username,$password,$fullname,$email,$phone);
 			if($user->insertUser()){
 				header("Location: http://localhost/thanhnhac/Intermediate.html?username=$username");
+			}else{
+				header("Location: http://localhost/thanhnhac/register.html");
 			}
 
 		}

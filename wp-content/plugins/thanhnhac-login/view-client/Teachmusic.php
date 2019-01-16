@@ -128,9 +128,48 @@
 		{
 			background-color: #f1f1f1;
 		}
+
+	    img{
+	      width: 160px;
+	        height: 100%;
+	    }
+	    body{
+	      margin: 0 auto;
+	      width: 1300px;
+	      background: linear-gradient(135deg, rgba(85,239,203,1) 0%,rgba(30,87,153,1) 0%,rgba(85,239,203,1) 0%,rgba(91,202,255,1) 100%);
+	      color: #4e4545;
+	    }
+	    header{
+	      display: flex;
+	      margin-bottom: 3%;
+	    }
+	    .left-header{
+	      max-width: 30%;
+	      flex-basis: 30%;
+	    }
+	    .right-header{
+	      max-width: 70%;
+	      flex-basis: 70%;
+	      padding-top: 5%;
+	    }
+	    h2{
+	      height: 100%;
+	      margin: 0 0 0 20%;
+	      font-weight: 500;
+	      color: #ff4411;
+	      text-transform: uppercase;
+	    }
 	</style>
 </head>
 <body>
+	<header>
+		<div class="left-header">
+			<img src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/image/logo.png">
+		</div>
+		<div class="right-header">
+			<h2>Bảng khảo sát chủ đề thanh nhạc</h2>
+		</div>
+	</header>
 	<div>
 		<label>Ngay lúc này, hãy mở chức năng ghi âm của điện thoại hoặc máy tính lên, bấm ghi âm và hát (không nhạc) một bài hát đầy đủ có đoạn đầu và đoạn điệp khúc, sau đó up file ghi âm đó lên đây, các chuyên gia của chúng tôi sẽ giúp bạn phân tích giọng hát. <small style="color:red">*</small></label>
 

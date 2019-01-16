@@ -33,8 +33,9 @@
   $(".form-add-user").on('submit', function(){
     var username = $('#data1').val();
     var email = $('#data2').val();
-    var fullname = $('#data3').val();
-    var password = $('#data4').val();
+    var phone = $('#data3').val();
+    var fullname = $('#data4').val();
+    var password = $('#data5').val();
     var url = $(this).attr("action");
     var method = $(this).attr("method");
     if(username != '' && email != '' && fullname != '' && password !='')
@@ -42,7 +43,7 @@
         $.ajax({
          url:url,
          method:method,
-         data:{username:username, email:email, fullname: fullname, password: password},
+         data:{username:username, email:email, phone:phone, fullname: fullname, password: password},
          success:function(data)
          {
           // $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
@@ -62,6 +63,7 @@
         $("#data2").val("");
         $("#data3").val("");
         $("#data4").val("");
+        $("#data5").val("");
         // setInterval(function(){
         //  $('#alert_message').html('');
         // }, 5000);

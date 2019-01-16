@@ -11,6 +11,7 @@
 							<tr>
 								<th>username</th>
 								<th>email</th>
+								<th>phone</th>
 								<th>fullname</th>
 								<th>delete</th>
 							</tr>

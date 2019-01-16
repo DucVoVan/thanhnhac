@@ -1,0 +1,94 @@
+table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			width: 13%;
+		}
+		th{
+			font-weight: 400;
+		}
+		td{
+			font-weight: 300;
+		}
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+		tr:nth-child(odd) {
+    		background-color: rgba(0,0,0,.05);
+		}
+		img{
+			width: 160px;
+    		height: 100%;
+		}
+		body{
+			margin: 0 auto;
+			width: 1300px;
+		}
+		header{
+			display: flex;
+		}
+		.left-header{
+			max-width: 30%;
+			flex-basis: 30%;
+		}
+		.right-header{
+			max-width: 70%;
+			flex-basis: 70%;
+			padding-top: 3%;
+		}
+		h2{
+			height: 100%;
+    		margin: 0;
+    		font-weight: 500;
+    		color: #ff4411;
+		}
+		tr:hover {
+    		background-color: #dcdcdc!important;
+		}
+		.well{
+			min-height: 20px;
+			padding: 19px;
+			margin-bottom: 20px;
+			background-color: #f5f5f5;
+			border: 1px solid #e3e3e3;
+			border-radius: 4px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+			display: none;
+			margin: 1em;
+		}
+		.label-add{
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		.my_popup_close{
+			margin-top: 10px;
+		}
+		.name{
+			cursor: pointer;
+			display: inline-block;
+			color: #117a8b;
+		}
+		.mark-point{
+			margin-top: 5%;
+		}
+		table tr:nth-child(even), table tr:nth-child(odd) {
+      		background-color: #dddddd;
+    	}
+    	table,tr,td,th{
+    		border: 1px solid #676767;
+    	}
+    	input{
+    		display: block;
+    		width: 100%;
+    	}
+    	input:focus{
+    		outline-offset: 0px!important;
+    		border: none!important;
+    		outline: 0px!important;
+    	}

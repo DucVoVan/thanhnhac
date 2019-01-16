@@ -18,8 +18,9 @@
 	<meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description' ); ?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<link rel="stylesheet" type="text/css" href="wp-content/plugins/thanhnhac-login/asset/css/login.css">
 	<script src="https://unpkg.com/sweetalert2@7.17.0/dist/sweetalert2.all.js"></script>
-
+	
 	
 	<?php wp_head(); ?>
 </head>

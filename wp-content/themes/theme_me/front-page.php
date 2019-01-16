@@ -2,7 +2,7 @@
         <div class="container">
             <div class="row">
                 <div class="home-left col-xl-4 col-lg-4">
-                    
+                    <div class="site-logo"><?php the_custom_logo(); ?></div>
                 </div>
 
                 <div class="home-between col-xl-4 col-lg-4">

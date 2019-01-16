@@ -9,15 +9,17 @@
 		private $password;
 		private $fullname;
 		private $email;
+		private $phone;
 
-		function __construct($username, $password, $fullname, $email){
+		function __construct($username, $password, $fullname, $email, $phone){
 			$this->username = $username;
 			$this->password = $password;
 			$this->fullname = $fullname;
 			$this->email = $email;
+			$this->phone = $phone;
 		}
 		public function insertUser(){
-			$sql = "INSERT INTO account (`username`, `email`, `fullname`, `password`) VALUES ('$this->username','$this->email','$this->fullname','$this->password' )";
+			$sql = "INSERT INTO `account` (`username`, `email`, `phone`, `fullname`, `password`) VALUES ('$this->username','$this->email','$this->phone','$this->fullname','$this->password' )";
 			$conn = $this->connect();
 			if(!mysqli_query( $conn, $sql )){
 				return false;

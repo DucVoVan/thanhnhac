@@ -1,7 +1,7 @@
 <?php
 //fetch.php
 require_once("../Create-table/connect.php");
-$columns = array('username', 'email','fullname');
+$columns = array('username', 'email', 'phone', 'fullname');
 
 $query = "SELECT * FROM account";
 if(isset($_POST["search"]["value"]))
@@ -41,6 +41,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array = array();
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="username">' . $row["username"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="email">' . $row["email"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="phone">' . $row["phone"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="fullname">' . $row["fullname"] . '</div>';
  $sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-xs delete" id="'.$row["id"].'">Xóa</button>';
  $data[] = $sub_array;

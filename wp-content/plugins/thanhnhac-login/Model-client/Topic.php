@@ -43,6 +43,6 @@
 			echo json_encode($data);
 		}		
 	}
-	$run = new Topic();
-	$run->getTopic("Thanh nhạc");
+	// $run = new Topic();
+	// $run->getTopic("Thanh nhạc");
 ?>

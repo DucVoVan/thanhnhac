@@ -207,9 +207,47 @@
 		div label{
 			cursor: pointer;
 		}
+		img{
+	      width: 160px;
+	        height: 100%;
+	    }
+	    body{
+	      margin: 0 auto;
+	      width: 1300px;
+	      background: linear-gradient(135deg, rgba(85,239,203,1) 0%,rgba(30,87,153,1) 0%,rgba(85,239,203,1) 0%,rgba(91,202,255,1) 100%);
+	      color: #4e4545;
+	    }
+	    header{
+	      display: flex;
+	      margin-bottom: 3%;
+	    }
+	    .left-header{
+	      max-width: 30%;
+	      flex-basis: 30%;
+	    }
+	    .right-header{
+	      max-width: 70%;
+	      flex-basis: 70%;
+	      padding-top: 5%;
+	    }
+	    h2{
+	      height: 100%;
+	      margin: 0 0 0 20%;
+	      font-weight: 500;
+	      color: #ff4411;
+	      text-transform: uppercase;
+	    }
 	</style>
 </head>
 <body>
+	<header>
+		<div class="left-header">
+			<img src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/image/logo.png">
+		</div>
+		<div class="right-header">
+			<h2>Bảng khảo sát chủ đề guitar</h2>
+		</div>
+	</header>
 	<div>
 		<label style="margin: 0px;">Nếu đã biết chơi guitar 1 ít, bạn hãy ghi âm và gửi lên đây bản chơi tốt nhất của bạn. Đội ngũ giảng viên của chúng tôi sẽ hiểu về năng lực của bạn hơn.</label>
 

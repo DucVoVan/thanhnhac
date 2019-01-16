@@ -1,9 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+			width: 13%;
+		}
+		th{
+			font-weight: 400;
+		}
+		td{
+			font-weight: 300;
+		}
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+		tr:nth-child(odd) {
+    		background-color: rgba(0,0,0,.05);
+		}
+		img{
+			width: 160px;
+    		height: 100%;
+		}
+		body{
+			margin: 0 auto;
+			width: 1300px;
+		}
+		header{
+			display: flex;
+		}
+		.left-header{
+			max-width: 30%;
+			flex-basis: 30%;
+		}
+		.right-header{
+			max-width: 70%;
+			flex-basis: 70%;
+			padding-top: 3%;
+		}
+		h2{
+			height: 100%;
+    		margin: 0;
+    		font-weight: 500;
+    		color: #ff4411;
+		}
+		tr:hover {
+    		background-color: #dcdcdc!important;
+		}
+	</style>
+</head>
+<header>
+	<div class="left-header">
+		<img src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/image/logo.png">
+	</div>
+	<div class="right-header">
+		<h2>Trang hiển thị toàn bộ câu trả lời của học viên</h2>
+	</div>
+</header>
+<body>
+
 <?php 
 	require_once("connect.php");  
-	$sql = "SELECT * FROM `teach-music` WHERE `status`=0";
+	$sql = "SELECT * FROM `teach-music`";
 	$result = mysqli_query($conn, $sql);
-	echo '<div><a class="hi" href="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/views/ShowMusic.php" target="blank">Xem tất cả câu trả lời của học viên</a></div>';
-
 	echo "<table>";
 	echo '<tr>
 		<th>Mục đích muốn học hát</th>
@@ -13,7 +82,6 @@
 		<th>Bạn có thường xuyên (hoặc có đủ khả năng) hét lớn tiếng gọi 1 người bạn ở cách chỗ bạn đang đứng khoảng bao nhiêu mét?</th>
 		<th>Note cao nhất mà bạn hát THOẢI MÁI là note nào? (kiểm tra bằng cách thử trên nhạc cụ hoặc các App Tuner trên điện thoại) *</th>
 		<th>File nhạc của học viên</th>
-		<th>Chấm điểm cho học viên này</th>
 	</tr>';
 	while($row = mysqli_fetch_assoc($result)){
 			$str = (string)$row['accountid'];
@@ -43,11 +111,8 @@
 			echo "<td>";
 			echo $row['question6'];
 			echo "</td>";
-			echo '<td class="eye">';
-			echo '<a href="'.$link2.'" target="blank"><i class="far fa-eye"></i></a>';
-			echo "</td>";
-			echo '<td class="pencil">';
-			echo '<a href="'.$link.'" target="blank"><i class="fas fa-paint-brush"></i></a>';
+			echo "<td>";
+			echo '<a href="'.$link2.'" target="blank">Xem file</a>';
 			echo "</td>";
 			echo "</tr>";
 	}
@@ -55,3 +120,6 @@
 
 ?>
 
+
+</body>
+</html>
