@@ -7,6 +7,5 @@
 	echo '<h3 class="label-add">Thông tin học viên</h3>';
 	echo "Họ tên: ".$row['fullname']."</br>";
 	echo "Email: ".$row['email']."</br>";
-	echo "Phone: "."0".$row['phone']."</br>";
 	echo '<button class="my_popup_close btn btn-info">Đóng</button>';
 ?>

@@ -1,3 +1,10 @@
+<?php 
+	session_start();
+	if(!isset($_SESSION['id'])){
+		header("Location: http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/404.php");
+		// exit();
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>

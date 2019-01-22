@@ -33,7 +33,7 @@ Mời bạn lựa chọn theo các phím chức năng sau:
                         if($_GET['f']){
                         ?>
                         <script type="text/javascript">
-                             swal({
+                            swal({
                               title: "Thông báo!",
                               text: "Tên đăng nhập hoặc mật khẩu chưa chính xác!",
                               type: "error",

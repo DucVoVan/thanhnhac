@@ -15,7 +15,7 @@
 	if(!mysqli_query( $conn, $sql )){
 		echo mysqli_error($conn);
 	}else{
-		echo "Thêm thành công!";
+		echo "Hoàn thành!";
 	}
 	
 ?>

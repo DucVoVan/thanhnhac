@@ -1,5 +1,18 @@
 <html>
 <head>
+	<style type="text/css">
+		body{
+			background: url("http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/image/piano2.jpg");
+		}
+		h2{
+			color: #ff2f2f;
+		}
+		.alert{
+			position: absolute;
+		    top: 35%;
+		    left: 35%;
+		}
+	</style>
 <script type="text/javascript">
 function getQueryVariable(variable)
 {
@@ -41,6 +54,9 @@ document.onload = init();
 </script>
 </head>
 <body>
-<h2>Prepare to be redirected after <span id="container"></span> second(s)!</h2>
+	<div class="alert">
+		<h2>Đăng kí thành công!</h2>
+		<h2>Đang chuyển về trang chủ trong <span id="container"></span> giây!</h2>
+	</div>
 </body>
 </html>

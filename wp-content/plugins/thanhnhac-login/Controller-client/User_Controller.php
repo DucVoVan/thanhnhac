@@ -3,14 +3,17 @@
 	/**
 	 * 
 	 */
+	
 	require_once('../Model-client/UserModel.php');
 	require_once('../Model-client/UserModelLogin.php');
 	require_once('../Model-client/Course-registered.php');
 	require_once('../Model-client/Topic.php');
 	require_once('../Model-client/Course.php');
+	
 	class User_Controller
 	{
 		
+
 		public function register(){
 			$username = isset($_POST['username'])? $_POST['username']: '' ;
 			$password = isset($_POST['password'])? $_POST['password']: '' ;
@@ -19,13 +22,16 @@
 			$phone = isset($_POST['phone'])? $_POST['phone']: '' ;
 			$phone = intval($phone);
 			$email = isset($_POST['email'])? $_POST['email']: '' ;
-			$user = new UserModel($username,$password,$fullname,$email,$phone);
-			if($user->insertUser()){
-				header("Location: http://localhost/thanhnhac/Intermediate.html?username=$username");
-			}else{
+			if(empty($username)||empty($password)||empty($fullname)||empty($phone)||empty($email)){
 				header("Location: http://localhost/thanhnhac/register.html");
+			}else{
+				$user = new UserModel($username,$password,$fullname,$email,$phone);
+				if($user->insertUser()){
+					header("Location: http://localhost/thanhnhac/Intermediate.html?username=$username");
+				}else{
+					header("Location: http://localhost/thanhnhac/register.html");
+				}
 			}
-
 		}
 
 		public function login(){
@@ -40,7 +46,7 @@
  				$check = new CourseRegistered();
  				if($check->checkCourse($row['id'])){
  					
- 					require_once('../view-client/User.php');
+ 					header("Location: http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/User.php");
  				}else{
  					header("Location: http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/pickcourse.php");
  				}
@@ -68,6 +74,7 @@
 	$name      = isset($_POST['name'])? $_POST['name']: '';
 	$insert      = isset($_POST['insert'])? $_POST['insert']: '';
 	$account_id = $_SESSION['id'];
+	
 	$run = new $controller();
 	if(!empty($id))
 		{

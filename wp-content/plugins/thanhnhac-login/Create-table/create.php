@@ -1,6 +1,6 @@
 <?php 
 	include 'connect.php';
-	$sql = "CREATE TABLE IF NOT EXISTS `thanhnhac`.`account` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , `username` VARCHAR(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL UNIQUE, `email` VARCHAR(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL UNIQUE , `fullname` VARCHAR(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL, `phone` INT(9) UNSIGNED NOT NULL UNIQUE, `password` VARCHAR(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL, `time` TIMESTAMP NOT NULL, PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;";
+	$sql = "CREATE TABLE IF NOT EXISTS `thanhnhac`.`account` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , `username` VARCHAR(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL UNIQUE, `email` VARCHAR(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL UNIQUE , `fullname` VARCHAR(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL, `phone` INT(9) UNSIGNED UNIQUE, `password` VARCHAR(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL, `time` TIMESTAMP NOT NULL, PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;";
 
 	$sql .= "CREATE TABLE IF NOT EXISTS `thanhnhac`.`topic` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL , `time` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;";
 

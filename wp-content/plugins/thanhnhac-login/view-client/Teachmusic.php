@@ -1,9 +1,18 @@
+<?php 
+	session_start();
+	if(!isset($_SESSION['id'])){
+		header("Location: http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/404.php");
+		// exit();
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Đánh giá chuyên mục thanh nhạc</title>
 	<meta charset="utf-8">
 	<link rel='stylesheet' id='bootstrap-css-css'  href='http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/css/bootstrap.min.css' type='text/css' media='all' />
+	<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/jquery-3.3.1.min.js"></script>
+	<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/Sweetalert.js"></script>
 	<style type="text/css">
 		input[type="file"]{
 			display: none;
@@ -159,6 +168,10 @@
 	      color: #ff4411;
 	      text-transform: uppercase;
 	    }
+	    #swal2-content h2{
+	    	margin: 0px;
+	    	font-size: 15px;
+	    }
 	</style>
 </head>
 <body>
@@ -182,7 +195,7 @@
 		<div id="progress"></div>
 	</div>
 	<form action="" method="POST" id="myForm">
-		<label>Mục đích bạn muốn học hát là để? <small style="color:red">*</small></label>
+		<label><label class="qs">Câu hỏi 1: </label>Mục đích bạn muốn học hát là để? <small style="color:red">*</small></label>
 		<div>
 			<input type="radio" name="question1" value="Hát Karaoke với bạn bè" id="1">
 			<label for="1">Hát Karaoke với bạn bè (không yêu cầu cao, chỉ cần hát ổn là được)</label>
@@ -213,7 +226,7 @@
 		</div>
 		
 		<div>
-			<label>Nếu ngay bây giờ, bạn đang ngồi một mình, cho bạn NGHE nhạc thì bạn sẽ chọn bài hát cụ thể nào? (ghi tên 3 bài hát cụ thể) <small style="color:red;">*</small></label>
+			<label><label class="qs">Câu hỏi 2: </label>Nếu ngay bây giờ, bạn đang ngồi một mình, cho bạn NGHE nhạc thì bạn sẽ chọn bài hát cụ thể nào? (ghi tên 3 bài hát cụ thể) <small style="color:red;">*</small></label>
 			<!-- <input type="text" name="question2"> -->
 			<div class="effect-area">
 				<textarea rows="3" cols="100" maxlength="300" required="required" class="text-area1 effect-2"  style="resize: none;" placeholder="Mỗi bài hát hãy nhập trong 1 dòng..."></textarea>
@@ -277,7 +290,6 @@
 		
 	</form>
 		
-	<div class="result"></div>
 		<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/jquery-3.3.1.min.js"></script>
 		<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/jquery.ui.widget.js" type="text/javascript"></script>
 		<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/jquery.iframe-transport.js" type="text/javascript"></script>
@@ -360,27 +372,170 @@
 				});
 				value7 = $("input[name='question7']:checked").val();
 			});
+			// Countdown
+            var time = 5;
+            function countDown(){
+				time--;
+				gett("container").innerHTML = time;
+				if(time == 0){
+					window.location = "http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/User.php";
+				}
+			}
+			function gett(id){
+				if(document.getElementById) return document.getElementById(id);
+				if(document.all) return document.all.id;
+				if(document.layers) return document.layers.id;
+				if(window.opera) return window.opera.id;
+			}
+			function init(){
+			if(gett('container')){
+				setInterval(countDown, 1000);
+				gett("container").innerHTML = time;
+				}
+				else{
+				setTimeout(init, 50);
+				}
+			}
+			//endCountdow
+			function isEmpty(str)
+			{
+			    str = str || null;
+			    return (typeof str == "undefined" || str == null);
+			}
 			$('form').on('submit',function(){
-				confirm("Bạn đã chắc chắn về các lựa chọn của mình! Bấm Ok để hoàn thành!");
-				$.ajax({
-					url: "http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/Controller-client/TeachmusicCtr.php",
-					type: "POST",
-					data: {
-						question1: value1,
-						question2: $('.text-area1').val(),
-						question3: $('.text-area2').val(),
-						question4: $('.text-1').val(),
-						question5: value6,
-						question6: value7,
-						question7: $("input[name='question8']").val(),
-						topicid: $("input[name='topicid']").val()
-					},
-					success: function(data){
-						$('.result').html(data);
-					}
+			// Bước 1: Lấy giá trị của username và password
+		    var username = $('#username').val();
+		    var password = $('#password').val();
+		 	var email    = $('#email').val();
+    		var mobile = $('#phone').val();
+		    var username1 = $('.username').html();
+			var phone1 = $('.phone').html();
+			var email1 = $('.email').html();
+		    // Bước 2: Kiểm tra dữ liệu hợp lệ hay không
+		    if (isEmpty(value1)){
+		        swal({
+				  title: "Thông báo!",
+				  text: "Bạn chưa nhập tên đăng nhập!",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				  timer: 10000
 				});
 				return false;
-			});
+		    }	
+		    else if (isEmpty(password))
+		    {
+		        swal({
+				  title: "Thông báo!",
+				  text: "Bạn chưa nhập mật khẩu!",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				  timer: 10000
+				});
+				return false;
+		    }
+		    else if (!patt.test(password))
+		    {
+		        swal({
+				  title: "Thông báo!",
+				  html: "<p>Mật khẩu bao gồm: </p><p> Cả ký tự chữ cái hoa, thường, chữ số, ký tự đặc biệt, dấu chấm</p><p> Bắt đầu với ký tự in hoa</p><p> Có từ 6 đến 32 ký tự</p><p>Ví dụ: User@123</p>",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				});
+				return false;
+		    }
+		    else if (isEmpty(email))
+		    {
+		        swal({
+				  title: "Thông báo!",
+				  text: "Bạn chưa nhập Email!",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				  timer: 10000
+				});
+				return false;
+		    }
+		    else if(mobile == ''){
+		        swal({
+					  title: "Thông báo!",
+					  html: "Bạn chưa nhập số điện thoại!",
+					  type: "error",
+					  confirmButtonText: 'OK',
+				});
+				return false;
+		    }	
+		    else if(phone.test(mobile) == false){
+		        
+		            swal({
+					  title: "Thông báo!",
+					  html: "Số điện thoại của bạn nhập không đúng định dạng!",
+					  type: "error",
+					  confirmButtonText: 'OK',
+					});
+		        return false;
+		    }	
+		    else if(!isEmpty(username1)){
+				swal({
+					title: "Thông báo!",
+					text: "Bạn phải nhập tên đăng nhập khác!",
+					type: "error",
+					confirmButtonText: 'OK',
+					timer: 10000
+				});
+				return false;
+			}else if(!isEmpty(email1)){
+				swal({
+					title: "Thông báo!",
+					text: "Bạn phải nhập một Email khác!",
+					type: "error",
+					confirmButtonText: 'OK',
+					timer: 10000
+				});
+				return false;
+			}else if(!isEmpty(phone1)){
+				swal({
+					title: "Thông báo!",
+					text: "Bạn phải nhập một số điện thoại khác!",
+					type: "error",
+					confirmButtonText: 'OK',
+					timer: 10000
+				});
+				return false;
+			}else{
+				
+				if(confirm("Bạn đã chắc chắn về các lựa chọn của mình! Bấm Ok để hoàn thành!")){
+					$.ajax({
+						url: "http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/Controller-client/TeachmusicCtr.php",
+						type: "POST",
+						data: {
+							question1: value1,
+							question2: $('.text-area1').val(),
+							question3: $('.text-area2').val(),
+							question4: $('.text-1').val(),
+							question5: value6,
+							question6: value7,
+							question7: $("input[name='question8']").val(),
+							topicid: $("input[name='topicid']").val()
+						},
+						success: function(data){
+							document.onload = init(); // start countdown
+							swal({
+								title: data,
+								allowOutsideClick: false,
+								allowEscapeKey : false,
+								html: '<h2>Đang chuyển tới trang cá nhân trong <span id="container"></span> giây!</h2>',
+								type: "success",
+								confirmButtonText: 'OK',
+							});
+							// setTimeout('Redirect()', 10000);
+						}
+					});
+					return false;
+				}else{
+					return false;
+				}
+			}
+			
+		});
 
 		</script>
 </body>

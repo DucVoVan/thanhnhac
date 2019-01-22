@@ -1,30 +1,30 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
-*:focus {
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+  *:focus {
   outline: none;
-}
+  }
 
-body {
+  body {
   margin: 0;
   padding: 0;
-  background: #DDD;
+  background: linear-gradient(135deg, rgba(85,239,203,1) 0%,rgba(30,87,153,1) 0%,rgba(85,239,203,1) 0%,rgba(91,202,255,1) 100%);
   font-size: 16px;
   color: #222;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-}
+  }
 
-#login-box {
+  #login-box {
   position: relative;
   margin: 5% auto;
   display: block;
   width: 600px;
-  height: 600px;
+  height: 550px;
   background: #FFF;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
+  }
 
-.left {
+  .left {
   position: absolute;
   top: 0;
   left: 0;
@@ -33,19 +33,19 @@ body {
   width: 300px;
   height: 100%;
   display: block;
-}
+  }
 
-h1 {
+  h1 {
   margin: 0 0 25% 0;
   font-weight: 300;
   font-size: 28px;
-}
+  }
 
-input[type="text"],input[type="email"],input[type="fullname"],
-input[type="password"] {
+  input[type="text"],input[type="email"],input[type="fullname"],
+  input[type="password"] {
   display: block;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 4px;
   width: 220px;
   height: 32px;
@@ -55,16 +55,16 @@ input[type="password"] {
   font-weight: 400;
   font-size: 15px;
   transition: 0.2s ease;
-}
+  }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+  input[type="text"]:focus,input[type="email"]:focus,
+  input[type="password"]:focus {
   border-bottom: 2px solid #16a085;
   color: #16a085;
   transition: 0.2s ease;
-}
+  }
 
-input[type="submit"] {
+  input[type="submit"] {
   margin-top: 28px;
   width: 120px;
   height: 32px;
@@ -77,22 +77,22 @@ input[type="submit"] {
   text-transform: uppercase;
   transition: 0.1s ease;
   cursor: pointer;
-}
+  }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus {
+  input[type="submit"]:hover,
+  input[type="submit"]:focus {
   opacity: 0.8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
-}
+  }
 
-input[type="submit"]:active {
+  input[type="submit"]:active {
   opacity: 1;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
-}
+  }
 
-.or {
+  .or {
   position: absolute;
   top: 45%;
   left: 280px;
@@ -104,9 +104,9 @@ input[type="submit"]:active {
   line-height: 40px;
   text-align: center;
   display: block;
-}
+  }
 
-.right {
+  .right {
   position: absolute;
   top: 0;
   right: 0;
@@ -119,17 +119,17 @@ input[type="submit"]:active {
   background-position: center;
   border-radius: 0 2px 2px 0;
   display: block;
-}
+  }
 
-.right .loginwith {
+  .right .loginwith {
   display: block;
   margin-bottom: 60%;
   font-size: 28px;
   color: #FFF;
   text-align: center;
-}
+  }
 
-button.social-signin {
+  button.social-signin {
   margin-bottom: 20px;
   width: 220px;
   height: 36px;
@@ -140,81 +140,99 @@ button.social-signin {
   font-weight: 500;
   transition: 0.2s ease;
   cursor: pointer;
-}
+  }
 
-button.social-signin:hover,
-button.social-signin:focus {
+  button.social-signin:hover,
+  button.social-signin:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.2s ease;
-}
+  }
 
-button.social-signin:active {
+  button.social-signin:active {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   transition: 0.2s ease;
-}
+  }
 
-button.social-signin.facebook {
+  button.social-signin.facebook {
   background: #32508E;
-}
+  }
 
-button.social-signin.twitter {
+  button.social-signin.twitter {
   background: #55ACEE;
-}
+  }
 
-button.social-signin.google {
+  button.social-signin.google {
   background: #DD4B39;
-}
-table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
+  }
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  }
 
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-      width: 13%;
-    }
-    th{
-      font-weight: 400;
-    }
-    td{
-      font-weight: 300;
-    }
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-    tr:nth-child(odd) {
-        background-color: rgba(0,0,0,.05);
-    }
-    img{
-      width: 160px;
-        height: 100%;
-    }
-    body{
-      margin: 0 auto;
-      width: 1300px;
-    }
-    header{
-      display: flex;
-    }
-    .left-header{
-      max-width: 30%;
-      flex-basis: 30%;
-    }
-    .right-header{
-      max-width: 70%;
-      flex-basis: 70%;
-      padding-top: 5%;
-    }
-    h2{
-      height: 100%;
-      margin: 0 0 0 20%;
-      font-weight: 500;
-      color: #ff4411;
-      text-transform: uppercase;
-    }
-    tr:hover {
-        background-color: #dcdcdc!important;
-    }
+  td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  width: 13%;
+  }
+  th{
+  font-weight: 400;
+  }
+  td{
+  font-weight: 300;
+  }
+  tr:nth-child(even) {
+  background-color: #dddddd;
+  }
+  tr:nth-child(odd) {
+  background-color: rgba(0,0,0,.05);
+  }
+  img{
+  width: 160px;
+  height: 100%;
+  }
+  body{
+  position: absolute;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+  }
+  header{
+  margin: 0 auto;
+  width: 1200px;
+  display: flex;
+  }
+  .left-header{
+  max-width: 30%;
+  flex-basis: 30%;
+  }
+  .right-header{
+  max-width: 70%;
+  flex-basis: 70%;
+  padding-top: 5%;
+  }
+  h2{
+  height: 100%;
+  margin: 0 0 0 20%;
+  font-weight: 500;
+  color: #ff4411;
+  text-transform: uppercase;
+  }
+  tr:hover {
+  background-color: #dcdcdc!important;
+  }
+  .phone,.email,.username,.password{
+  margin: 0;
+  color: red;
+  font-size: 13px;
+  height: 15px
+  }
+  .result{
+  display: none;
+  }
+  html{
+  background: linear-gradient(135deg, rgba(85,239,203,1) 0%,rgba(30,87,153,1) 0%,rgba(85,239,203,1) 0%,rgba(91,202,255,1) 100%);
+  }
+
+  

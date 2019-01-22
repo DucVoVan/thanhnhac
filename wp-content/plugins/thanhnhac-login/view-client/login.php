@@ -1,7 +1,8 @@
-<?php 
+<?php
+	
 	add_shortcode('shortcode1', 'abc');
 	function abc(){
-
+		
 	?>
 	
 	<div class="login-page">
