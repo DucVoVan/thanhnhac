@@ -10,12 +10,27 @@
 	$question7 =  isset($_POST['question7'])? $_POST['question7']: '';
 	$topicid =  isset($_POST['topicid'])? $_POST['topicid']: '';
 	$account_id = $_SESSION['id'];
-	$sql = "INSERT INTO `teach-music` (`accountid`,`topicid`,`question1`,`question2`,`question3`,`question4`,`question5`,`question6`,`question7`) VALUES ('".$account_id."','".$topicid."','".$question1."','".$question2."','".$question3."','".$question4."','".$question5."','".$question6."','".$question7."')";
-	// $result = mysqli_query($conn, $sql);
-	if(!mysqli_query( $conn, $sql )){
-		echo mysqli_error($conn);
+
+	$sql = "SELECT `topicid` FROM `teach-music` WHERE `accountid` = 'account_id'" ;
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_assoc($result);
+	// Kiểm tra xem người dùng đã có bản đánh giá trong CSDL hay chưa
+	if(empty($row)){
+		// Nếu có rồi thì hiện thông báo
+		echo "Bạn đã hoàn thành bản đánh giá năng lực trước đó!";
 	}else{
-		echo "Hoàn thành!";
+		// Nếu chưa thì thêm mới
+		$sql = "INSERT INTO `teach-music` (`accountid`,`topicid`,`question1`,`question2`,`question3`,`question4`,`question5`,`question6`,`question7`) VALUES ('".$account_id."','".$topicid."','".$question1."','".$question2."','".$question3."','".$question4."','".$question5."','".$question6."','".$question7."')";
+		// $result = mysqli_query($conn, $sql);
+		if(!mysqli_query( $conn, $sql )){
+			echo mysqli_error($conn);
+		}else{
+			echo "Hoàn thành!";
+		}
 	}
+	
+	
+
+	
 	
 ?>

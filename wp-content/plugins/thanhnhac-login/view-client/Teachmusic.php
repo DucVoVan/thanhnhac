@@ -4,9 +4,13 @@
 		header("Location: http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/404.php");
 		// exit();
 	}
+	if($_SESSION['music']==true){
+		echo "Bạn đã hoàn thành bản đánh giá năng lực, vui lòng đăng kí và hoàn thành ít nhất một khóa học để làm bản đánh giá năng lực mới";
+		exit();
+	}
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 	<title>Đánh giá chuyên mục thanh nhạc</title>
 	<meta charset="utf-8">
@@ -17,10 +21,21 @@
 		input[type="file"]{
 			display: none;
 		}
+		#dropZone{
+			padding: 10px;
+		}
+		.title-file-music{
+			padding: 10px;
+    		margin: 0px;
+		}
+		.file-music{
+			border: 3px solid #f1f1f1;
+    		-webkit-box-shadow: 3px 3px 15px grey;
+		}
 		.choose-file{
 			flex: 1 1 auto;
-			margin: 5px;
-			padding: 5px;
+			margin: 0px;
+			padding: 10px;
 			border: 2px solid #f7f7f7;
 			text-align: center;
 			text-transform: uppercase;
@@ -71,6 +86,15 @@
 			display: inherit;
 			border: none;
 			background-color: transparent;
+			
+		}
+		.text-1{
+			color: #333;
+		    width: 10%;
+		    box-sizing: border-box;
+		    letter-spacing: 1px;
+		    border: 0;
+		    border-bottom: 1px solid #fff;
 		}
 		textarea{
 		    color: #333;
@@ -80,7 +104,7 @@
 		    border: 0;
 		    border-bottom: 1px solid #fff;
 		}
-		textarea ~ .focus-border{
+		.text-1 ~ .focus-border, textarea ~ .focus-border{
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -91,6 +115,10 @@
 		}
 		textarea:focus ~ .focus-border{
 			width: 100%;
+    		transition: 0.4s;
+		}
+		.text-1:focus ~ .focus-border{
+			width: 10%;
     		transition: 0.4s;
 		}
 		.effect-area{
@@ -172,6 +200,16 @@
 	    	margin: 0px;
 	    	font-size: 15px;
 	    }
+	    .qs{
+	    	color: red;
+	    	text-decoration: underline;
+	    }
+	    .qs-background{
+	    	margin: 2% 0;
+	    }
+	    .submit{
+	    	text-align: center;
+	    }
 	</style>
 </head>
 <body>
@@ -183,8 +221,8 @@
 			<h2>Bảng khảo sát chủ đề thanh nhạc</h2>
 		</div>
 	</header>
-	<div>
-		<label>Ngay lúc này, hãy mở chức năng ghi âm của điện thoại hoặc máy tính lên, bấm ghi âm và hát (không nhạc) một bài hát đầy đủ có đoạn đầu và đoạn điệp khúc, sau đó up file ghi âm đó lên đây, các chuyên gia của chúng tôi sẽ giúp bạn phân tích giọng hát. <small style="color:red">*</small></label>
+	<div class="file-music">
+		<label class="title-file-music">Ngay lúc này, hãy mở chức năng ghi âm của điện thoại hoặc máy tính lên, bấm ghi âm và hát (không nhạc) một bài hát đầy đủ có đoạn đầu và đoạn điệp khúc, sau đó up file ghi âm đó lên đây, các chuyên gia của chúng tôi sẽ giúp bạn phân tích giọng hát. <small style="color:red">*</small></label>
 
 		<div id="dropZone">
 			<label class="choose-file"> Thêm tệp
@@ -195,60 +233,68 @@
 		<div id="progress"></div>
 	</div>
 	<form action="" method="POST" id="myForm">
-		<label><label class="qs">Câu hỏi 1: </label>Mục đích bạn muốn học hát là để? <small style="color:red">*</small></label>
-		<div>
-			<input type="radio" name="question1" value="Hát Karaoke với bạn bè" id="1">
-			<label for="1">Hát Karaoke với bạn bè (không yêu cầu cao, chỉ cần hát ổn là được)</label>
-		</div>
-		<div>
-			<input type="radio" name="question1" value="Trở thành ca sĩ nổi tiếng" id="2">
-			<label for="2">Trở thành ca sĩ nổi tiếng (hiện đã đi hát chuyên nghiệp rồi)</label>
-		</div>
-		<div>
-			<input type="radio" name="question1" value="Trước mắt là hát cho vui thôi, sau này nếu cảm thấy ổn sẽ đi chuyên nghiệp hơn" id="3">
-			<label for="3">Trước mắt là hát cho vui thôi, sau này nếu cảm thấy ổn sẽ đi chuyên nghiệp hơn</label>
-		</div>
-		<div>
-			<input type="radio" name="question1" value="Trở thành ca sĩ chuyên nghiệp" id="4">
-			<label for="4">Trở thành ca sĩ chuyên nghiệp</label>
-		</div>
-		<div>
-			<input type="radio" name="question1" value="Chuẩn bị cho các cuộc thi ca hát sắp đến" id="5">
-			<label for="5">Chuẩn bị cho các cuộc thi ca hát sắp đến</label>
-		</div>
-		<div>
-			<input type="radio" name="question1" value="" class="11" id="6">
-			<label for="6">Lý do khác:</label>
-			<div class="effect-area">
-				<textarea class="12 effect-1" rows="1" cols="100" maxlength="100" style="resize: none;" placeholder="Lý do của bạn ..."></textarea>
-				<span class="focus-border"></span>
+		<div class="qs-background">
+			<label><label class="qs">Câu hỏi 1: </label> Mục đích bạn muốn học hát là để? <small style="color:red">*</small></label>
+			<div>
+				<input type="radio" name="question1" value="Hát Karaoke với bạn bè" id="1">
+				<label for="1">Hát Karaoke với bạn bè (không yêu cầu cao, chỉ cần hát ổn là được)</label>
+			</div>
+			<div>
+				<input type="radio" name="question1" value="Trở thành ca sĩ nổi tiếng" id="2">
+				<label for="2">Trở thành ca sĩ nổi tiếng (hiện đã đi hát chuyên nghiệp rồi)</label>
+			</div>
+			<div>
+				<input type="radio" name="question1" value="Trước mắt là hát cho vui thôi, sau này nếu cảm thấy ổn sẽ đi chuyên nghiệp hơn" id="3">
+				<label for="3">Trước mắt là hát cho vui thôi, sau này nếu cảm thấy ổn sẽ đi chuyên nghiệp hơn</label>
+			</div>
+			<div>
+				<input type="radio" name="question1" value="Trở thành ca sĩ chuyên nghiệp" id="4">
+				<label for="4">Trở thành ca sĩ chuyên nghiệp</label>
+			</div>
+			<div>
+				<input type="radio" name="question1" value="Chuẩn bị cho các cuộc thi ca hát sắp đến" id="5">
+				<label for="5">Chuẩn bị cho các cuộc thi ca hát sắp đến</label>
+			</div>
+			<div>
+				<input type="radio" name="question1" value="" class="11" id="6">
+				<label for="6">Lý do khác:</label>
+				<div class="effect-area">
+					<textarea class="12 effect-1" rows="1" cols="100" maxlength="100" style="resize: none;" placeholder="Lý do của bạn ..."></textarea>
+					<span class="focus-border"></span>
+				</div>
 			</div>
 		</div>
-		
-		<div>
-			<label><label class="qs">Câu hỏi 2: </label>Nếu ngay bây giờ, bạn đang ngồi một mình, cho bạn NGHE nhạc thì bạn sẽ chọn bài hát cụ thể nào? (ghi tên 3 bài hát cụ thể) <small style="color:red;">*</small></label>
-			<!-- <input type="text" name="question2"> -->
-			<div class="effect-area">
-				<textarea rows="3" cols="100" maxlength="300" required="required" class="text-area1 effect-2"  style="resize: none;" placeholder="Mỗi bài hát hãy nhập trong 1 dòng..."></textarea>
-				<span class="focus-border"></span>
+		<div class="qs-background">
+			<div>
+				<label><label class="qs">Câu hỏi 2: </label> Nếu ngay bây giờ, bạn đang ngồi một mình, cho bạn NGHE nhạc thì bạn sẽ chọn bài hát cụ thể nào? (ghi tên 3 bài hát cụ thể) <small style="color:red;">*</small></label>
+				<!-- <input type="text" name="question2"> -->
+				<div class="effect-area">
+					<textarea rows="3" cols="100" maxlength="300" class="text-area1 effect-2"  style="resize: none;" placeholder="Mỗi bài hát hãy nhập trong 1 dòng..."></textarea>
+					<span class="focus-border"></span>
+				</div>
 			</div>
 		</div>
-		<div>
-			<label>Bạn thích chất giọng của ca sĩ nào nhất (hay cụ thể hơn, hãy ghi thêm trong chất giọng đó, bạn thích ở điểm nào, điểm nào không thích) ? <small style="color: red;">*</small></label>
-			<div class="effect-area">
-				<textarea rows="1" cols="100" maxlength="100" required="required" class="text-area2 effect-3"  style="resize: none;" placeholder="Chất giọng ca sĩ..."></textarea>
-				<span class="focus-border"></span>
+		<div class="qs-background">
+			<div>
+				<label><label class="qs">Câu hỏi 3: </label> Bạn thích chất giọng của ca sĩ nào nhất (hay cụ thể hơn, hãy ghi thêm trong chất giọng đó, bạn thích ở điểm nào, điểm nào không thích) ? <small style="color: red;">*</small></label>
+				<div class="effect-area">
+					<textarea rows="1" cols="100" maxlength="100" class="text-area2 effect-3"  style="resize: none;" placeholder="Chất giọng ca sĩ..."></textarea>
+					<span class="focus-border"></span>
+				</div>
 			</div>
 		</div>
-
-		<div>
-			<label>Hãy thử đọc to rõ MỘT HƠI, với tốc độ vừa phải chuỗi câu "1 ông sao sáng, 2 ông sao sáng, 3 ông sao sáng...." xem thử đếm được tối đa bao nhiêu ông sao sáng? <small style="color: red;">*</small>
-			</label>
-			<input type="number" name="" min="0" max="100" step="1" class="text-1">
+		<div class="qs-background">
+			<div>
+				<label><label class="qs">Câu hỏi 4: </label> Hãy thử đọc to rõ MỘT HƠI, với tốc độ vừa phải chuỗi câu "1 ông sao sáng, 2 ông sao sáng, 3 ông sao sáng...." xem thử đếm được tối đa bao nhiêu ông sao sáng? <small style="color: red;">*</small>
+				</label>
+				<div class="effect-area">
+					<input type="number" name=""  step="1" class="text-1">
+					<span class="focus-border"></span>
+				</div>
+			</div>
 		</div>
-		<div >
-
-			<label>Bạn có thường xuyên (hoặc có đủ khả năng) hét lớn tiếng gọi 1 người bạn ở cách chỗ bạn đang đứng khoảng bao nhiêu mét? <small>*</small></label>
+		<div class="qs-background">
+			<label><label class="qs">Câu hỏi 5: </label> Bạn có thường xuyên (hoặc có đủ khả năng) hét lớn tiếng gọi 1 người bạn ở cách chỗ bạn đang đứng khoảng bao nhiêu mét? <small style="color: red;">*</small></label>
 			<div>
 				<input type="radio" name="question6" value="Dưới 10 mét" id="7">
 				<label for="7">Dưới 10 mét</label>
@@ -261,8 +307,9 @@
 				<input type="radio" name="question6" value="Trên 20 mét" id="9">
 				<label for="9">Trên 20 mét</label>
 			</div>
-
-			<label>Note cao nhất mà bạn hát THOẢI MÁI là note nào? (kiểm tra bằng cách thử trên nhạc cụ hoặc các App Tuner trên điện thoại) <small>*</small></label>
+		</div>
+		<div class="qs-background">
+			<label><label class="qs">Câu hỏi 6: </label> Note cao nhất mà bạn hát THOẢI MÁI là note nào? (kiểm tra bằng cách thử trên nhạc cụ hoặc các App Tuner trên điện thoại) <small style="color: red;">*</small></label>
 			<div>
 				<input type="radio" name="question7" value="Note Fa 4 đối với nam và Note Fa 5 đối với nữ" id="10">
 				<label for="10">Note Fa 4 đối với nam và Note Fa 5 đối với nữ</label>
@@ -286,8 +333,9 @@
 			<input type="hidden" name="question8" value="">
 			<input type="hidden" name="topicid" value="1">
 		</div>
-		<input type="submit" name="submit" value="submit"  class="btn btn-primary" style="margin-top: 10px;">
-		
+		<div class="submit">
+			<input type="submit" name="submit" value="Hoàn thành"  class="btn btn-primary" style="margin-top: 10px;">
+		</div>
 	</form>
 		
 		<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/jquery-3.3.1.min.js"></script>
@@ -403,105 +451,94 @@
 			    return (typeof str == "undefined" || str == null);
 			}
 			$('form').on('submit',function(){
-			// Bước 1: Lấy giá trị của username và password
-		    var username = $('#username').val();
-		    var password = $('#password').val();
-		 	var email    = $('#email').val();
-    		var mobile = $('#phone').val();
-		    var username1 = $('.username').html();
-			var phone1 = $('.phone').html();
-			var email1 = $('.email').html();
-		    // Bước 2: Kiểm tra dữ liệu hợp lệ hay không
 		    if (isEmpty(value1)){
 		        swal({
 				  title: "Thông báo!",
-				  text: "Bạn chưa nhập tên đăng nhập!",
+				  text: "Bạn chưa trả lời câu hỏi 1!",
 				  type: "error",
 				  confirmButtonText: 'OK',
 				  timer: 10000
 				});
 				return false;
 		    }	
-		    else if (isEmpty(password))
+		    else if (isEmpty($('.text-area1').val()))
 		    {
 		        swal({
 				  title: "Thông báo!",
-				  text: "Bạn chưa nhập mật khẩu!",
+				  text: "Bạn chưa trả lời câu hỏi 2!",
 				  type: "error",
 				  confirmButtonText: 'OK',
 				  timer: 10000
 				});
 				return false;
 		    }
-		    else if (!patt.test(password))
+		    else if (isEmpty($('.text-area2').val()))
 		    {
 		        swal({
 				  title: "Thông báo!",
-				  html: "<p>Mật khẩu bao gồm: </p><p> Cả ký tự chữ cái hoa, thường, chữ số, ký tự đặc biệt, dấu chấm</p><p> Bắt đầu với ký tự in hoa</p><p> Có từ 6 đến 32 ký tự</p><p>Ví dụ: User@123</p>",
-				  type: "error",
-				  confirmButtonText: 'OK',
-				});
-				return false;
-		    }
-		    else if (isEmpty(email))
-		    {
-		        swal({
-				  title: "Thông báo!",
-				  text: "Bạn chưa nhập Email!",
+				  text: "Bạn chưa trả lời câu hỏi 3!",
 				  type: "error",
 				  confirmButtonText: 'OK',
 				  timer: 10000
 				});
 				return false;
 		    }
-		    else if(mobile == ''){
+		    else if (isEmpty($('.text-1').val()))
+		    {
 		        swal({
-					  title: "Thông báo!",
-					  html: "Bạn chưa nhập số điện thoại!",
-					  type: "error",
-					  confirmButtonText: 'OK',
+				  title: "Thông báo!",
+				  text: "Bạn chưa trả lời câu hỏi 4!",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				  timer: 10000
 				});
 				return false;
-		    }	
-		    else if(phone.test(mobile) == false){
-		        
-		            swal({
-					  title: "Thông báo!",
-					  html: "Số điện thoại của bạn nhập không đúng định dạng!",
-					  type: "error",
-					  confirmButtonText: 'OK',
-					});
-		        return false;
-		    }	
-		    else if(!isEmpty(username1)){
-				swal({
-					title: "Thông báo!",
-					text: "Bạn phải nhập tên đăng nhập khác!",
-					type: "error",
-					confirmButtonText: 'OK',
-					timer: 10000
+		    }
+		    else if (Number($('.text-1').val()) >= 100)
+		    {
+		        swal({
+				  title: "Thông báo!",
+				  text: "Câu hỏi 4. Bạn chỉ được nhập số nhỏ hơn 100",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				  timer: 10000
 				});
 				return false;
-			}else if(!isEmpty(email1)){
-				swal({
-					title: "Thông báo!",
-					text: "Bạn phải nhập một Email khác!",
-					type: "error",
-					confirmButtonText: 'OK',
-					timer: 10000
+		    }
+		    else if (isEmpty(value6))
+		    {
+		        swal({
+				  title: "Thông báo!",
+				  text: "Bạn chưa trả lời câu hỏi 5!",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				  timer: 10000
 				});
 				return false;
-			}else if(!isEmpty(phone1)){
-				swal({
-					title: "Thông báo!",
-					text: "Bạn phải nhập một số điện thoại khác!",
-					type: "error",
-					confirmButtonText: 'OK',
-					timer: 10000
+		    }
+		    else if (isEmpty(value7))
+		    {
+		        swal({
+				  title: "Thông báo!",
+				  text: "Bạn chưa trả lời câu hỏi 6!",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				  timer: 10000
 				});
 				return false;
-			}else{
-				
+		    }
+		    else if (isEmpty($("input[name='question8']").val()))
+		    {
+		        swal({
+				  title: "Thông báo!",
+				  text: "Bạn chưa up file ghi âm!",
+				  type: "error",
+				  confirmButtonText: 'OK',
+				  timer: 10000
+				});
+				return false;
+		    }
+		   	else{				
 				if(confirm("Bạn đã chắc chắn về các lựa chọn của mình! Bấm Ok để hoàn thành!")){
 					$.ajax({
 						url: "http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/Controller-client/TeachmusicCtr.php",

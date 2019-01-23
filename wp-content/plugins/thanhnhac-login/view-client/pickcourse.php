@@ -4,6 +4,11 @@
 		header("Location: http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/404.php");
 		// exit();
 	}
+	if($_SESSION['music']==true){
+		$music = "#";
+	}else{
+		$music = "http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/Teachmusic.php";
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +17,7 @@
 	<link rel='stylesheet' id='bootstrap-css-css'  href='http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/css/bootstrap.min.css' type='text/css' media='all' />
 	<link rel="stylesheet" type="text/css" href="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/css/pickcourse.css" media="all" />
 	<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/jquery-3.3.1.min.js"></script>
+	<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/Sweetalert.js"></script>
 	<!-- <script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/pickcourse.js" async></script> -->
 	<script src="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/asset/js/bootstrap.min.js"></script>
 </head>
@@ -31,7 +37,29 @@
 				<h3>Mời bạn chọn chủ đề các khóa học của chúng tôi</h3>
 				<table>
 					<tr>
-						<th><a href="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/Teachmusic.php">Thanh nhạc</a></th>
+						<th>
+							<a class="testr" href="<?php echo $music; ?>">Thanh nhạc</a>
+						</th>
+						<script type="text/javascript">
+							function isEmpty(str)
+							{
+							    str = str || null;
+							    return (typeof str == "undefined" || str == null);
+							}
+							var value1 = "<?php echo $music; ?>";
+							$('.testr').click(function(){
+
+							if (value1=="#"){
+						        swal({
+								  title: "Thông báo!",
+								  text: "Bạn đã hoàn thành bản đánh giá năng lực với chủ đề khóa học này!",
+								  type: "info",
+								  confirmButtonText: 'OK',
+								  timer: 10000
+								});
+					    	}	
+							})
+						</script>
 					</tr>
 					<tr>
 						<td><a href="http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/Teachguitar.php">Guitar</a></td>

@@ -6,6 +6,7 @@
 	
 	require_once('../Model-client/UserModel.php');
 	require_once('../Model-client/UserModelLogin.php');
+	require_once('../Model-client/UserTeachmusic.php');
 	require_once('../Model-client/Course-registered.php');
 	require_once('../Model-client/Topic.php');
 	require_once('../Model-client/Course.php');
@@ -41,10 +42,13 @@
 			$user = new UserModelLogin($username, $password);
 			$row = $user->authlogin();
 			$_SESSION['id'] = $row['id'];
+
 			if($row){
  				// Kiểm tra xem account đã chọn khóa học nào chưa, nếu chọn rồi thì chuyển sang trang cá nhân, nếu chưa chọn thì ta về trang đánh giá năng lực Markingforce.php
- 				$check = new CourseRegistered();
- 				if($check->checkCourse($row['id'])){
+ 				$checkCourse = new CourseRegistered();
+ 				$checkMusic = new UserTeachmusic($row['id']);
+ 				$checkMusic->checkTopicCoursed();
+ 				if($checkCourse->checkCourse($row['id'])){
  					
  					header("Location: http://localhost/thanhnhac/wp-content/plugins/thanhnhac-login/view-client/User.php");
  				}else{
